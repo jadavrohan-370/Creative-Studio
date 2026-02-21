@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
+import { Download, Menu, X } from "lucide-vue-next";
 import gsap from "gsap";
 
 const isScrolled = ref(false);
@@ -40,7 +41,7 @@ onUnmounted(() => {
     class="fixed top-0 inset-x-0 z-100 transition-all duration-700"
     :class="
       isScrolled
-        ? 'py-4 bg-background/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl'
+        ? 'py-4 bg-white/70 backdrop-blur-3xl border-b border-blue-900/5 shadow-sm'
         : 'py-8'
     "
   >
@@ -66,8 +67,8 @@ onUnmounted(() => {
           class="nav-item text-sm font-bold uppercase tracking-widest relative group transition-colors duration-300"
           :class="
             route.path === link.path
-              ? 'text-white'
-              : 'text-muted hover:text-white'
+              ? 'text-[#1E3A8A]'
+              : 'text-muted hover:text-[#1E3A8A]'
           "
         >
           {{ link.name }}
@@ -86,54 +87,27 @@ onUnmounted(() => {
         <a
           href="/Frontend_Resume.pdf"
           download="Rohan_Jadav_Resume.pdf"
-          class="hidden lg:flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-muted hover:text-white transition-all duration-300 group/cv"
+          class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-white text-xs font-black uppercase tracking-[0.15em] hover:bg-neon hover:shadow-lg hover:shadow-neon/30 transition-all duration-300"
         >
-          <span
-            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover/cv:border-accent group-hover/cv:text-accent transition-all duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-3.5 h-3.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-          </span>
+          <Download :size="14" />
           Resume
         </a>
 
         <!-- Hire Me -->
         <router-link
           to="/contact"
-          class="hidden md:flex px-7 py-3 rounded-full border border-white/15 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500 backdrop-blur-sm shadow-lg hover:shadow-white/5"
+          class="hidden md:flex px-7 py-3 rounded-full border border-blue-900/10 text-xs font-bold uppercase tracking-widest hover:bg-[#1E3A8A] hover:text-white transition-all duration-500 backdrop-blur-sm shadow-sm"
         >
           Hire Me
         </router-link>
 
         <!-- Mobile Hamburger -->
         <button
-          class="md:hidden flex flex-col gap-1.5 p-2"
+          class="md:hidden w-10 h-10 flex items-center justify-center relative z-50 text-[#1E3A8A]"
           @click="isMobileMenuOpen = !isMobileMenuOpen"
         >
-          <span
-            class="w-6 h-0.5 bg-white transition-all duration-300"
-            :class="isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-white transition-all duration-300"
-            :class="isMobileMenuOpen ? 'opacity-0' : ''"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-white transition-all duration-300"
-            :class="isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''"
-          ></span>
+          <Menu v-if="!isMobileMenuOpen" :size="24" />
+          <X v-else :size="24" />
         </button>
       </div>
     </div>
@@ -142,18 +116,29 @@ onUnmounted(() => {
     <Transition name="mobile-menu">
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden absolute top-full inset-x-0 bg-background/95 backdrop-blur-2xl border-b border-white/5 px-6 py-8 flex flex-col gap-6"
+        class="md:hidden absolute top-full inset-x-0 bg-white/95 backdrop-blur-3xl border-b border-black/5 px-6 py-8 flex flex-col gap-6"
       >
         <router-link
           v-for="link in navLinks"
           :key="link.name"
           :to="link.path"
           class="text-2xl font-black uppercase tracking-tight hover:text-accent transition-colors duration-300"
-          :class="route.path === link.path ? 'text-accent' : 'text-white'"
+          :class="route.path === link.path ? 'text-accent' : 'text-[#1E3A8A]'"
           @click="isMobileMenuOpen = false"
         >
           {{ link.name }}
         </router-link>
+        
+        <!-- Mobile Resume Button -->
+        <a
+          href="/Frontend_Resume.pdf"
+          download="Rohan_Jadav_Resume.pdf"
+          class="flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-accent text-white text-base font-black uppercase tracking-wider hover:bg-neon hover:shadow-lg hover:shadow-neon/30 transition-all duration-300"
+          @click="isMobileMenuOpen = false"
+        >
+          <Download :size="20" />
+          Download Resume
+        </a>
       </div>
     </Transition>
   </nav>

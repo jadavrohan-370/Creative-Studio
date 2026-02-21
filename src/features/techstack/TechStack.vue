@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import {
+  FileCode,
+  Palette,
+  Zap,
+  Box,
+  GitBranch,
+  Monitor,
+} from "lucide-vue-next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,42 +17,42 @@ const techs = [
   {
     name: "HTML5",
     category: "Markup",
-    icon: "🧱",
+    icon: FileCode,
     color: "#E34F26",
     desc: "Semantic, accessible, standards-compliant markup.",
   },
   {
     name: "Tailwind CSS",
     category: "Styling",
-    icon: "🌊",
+    icon: Palette,
     color: "#38bdf8",
     desc: "Utility-first CSS for rapid, consistent UI building.",
   },
   {
     name: "JavaScript",
     category: "ES6+ Logic",
-    icon: "⚡",
+    icon: Zap,
     color: "#F7DF1E",
     desc: "Modern JS — async/await, modules, destructuring & more.",
   },
   {
     name: "React.js",
     category: "Framework",
-    icon: "⚛️",
+    icon: Box,
     color: "#61DAFB",
     desc: "Component-based UIs with hooks, context & state management.",
   },
   {
     name: "Git & GitHub",
     category: "Workflow",
-    icon: "🐙",
+    icon: GitBranch,
     color: "#ffffff",
     desc: "Version control, branching, and collaborative coding.",
   },
   {
     name: "Responsive Design",
     category: "UX",
-    icon: "📱",
+    icon: Monitor,
     color: "#7F5AF0",
     desc: "Mobile-first layouts that look great on every screen.",
   },
@@ -131,12 +139,13 @@ onMounted(() => {
         >
           <!-- Top row -->
           <div class="flex justify-between items-start">
+            <component
+              :is="tech.icon"
+              class="w-12 h-12 transition-all duration-500 group-hover:scale-110 group-hover:text-accent"
+              :style="{ color: tech.color }"
+            />
             <span
-              class="text-5xl transition-transform duration-500 group-hover:scale-125"
-              >{{ tech.icon }}</span
-            >
-            <span
-              class="text-[10px] uppercase tracking-[0.3em] font-bold text-white/20 group-hover:text-accent transition-colors duration-500"
+              class="text-[10px] uppercase tracking-[0.3em] font-bold text-blue-900/40 group-hover:text-accent transition-colors duration-500"
               >{{ tech.category }}</span
             >
           </div>

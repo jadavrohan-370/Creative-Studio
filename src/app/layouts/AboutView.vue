@@ -2,6 +2,17 @@
 import { onMounted, ref } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Flame,
+  BookOpen,
+  GraduationCap,
+  Atom,
+  Rocket,
+  Sparkles,
+  User,
+  Sprout,
+  Package,
+} from "lucide-vue-next";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,66 +24,62 @@ const journey = [
     year: "2022",
     title: "The Spark",
     desc: "Discovered web development by accident — opened DevTools out of curiosity and got completely hooked. Built my first HTML page that same night.",
-    icon: "🔥",
+    icon: Flame,
     color: "#E34F26",
   },
   {
     year: "2023",
     title: "Learning the Craft",
     desc: "Deep-dived into HTML5 semantics, CSS Flexbox & Grid, and vanilla JavaScript. Completed over 50 mini-projects and fell in love with the creative process.",
-    icon: "📚",
+    icon: BookOpen,
     color: "#F7DF1E",
   },
   {
     year: "2023",
     title: "Discovering React",
     desc: "Learned React.js and everything changed. Component-based thinking, hooks, and the ecosystem opened up a new world of building scalable UIs.",
-    icon: "⚛️",
+    icon: GraduationCap,
     color: "#61DAFB",
   },
   {
     year: "2024",
     title: "Going Professional",
     desc: "Started taking on real-world projects. Built e-commerce apps, SaaS dashboards, and API-powered tools. Adopted Tailwind CSS and never looked back.",
-    icon: "🚀",
+    icon: Atom,
     color: "#7F5AF0",
   },
   {
     year: "2025",
     title: "Levelling Up",
     desc: "Focused on performance, accessibility, and pixel-perfect design execution. Explored animations, WebGL, and building truly delightful user experiences.",
-    icon: "✨",
+    icon: Rocket,
     color: "#00F5D4",
   },
   {
     year: "Now",
     title: "Always Building",
     desc: "Continuously pushing the frontier — contributing to open source, mentoring beginners, and looking for exciting opportunities to collaborate.",
-    icon: "🎯",
+    icon: Sparkles,
     color: "#2CB67D",
   },
 ];
 
 const values = [
-  {
-    title: "Clean Code",
-    desc: "Readable, maintainable code is a feature. I write code that teams love to work with.",
-    icon: "🧹",
-  },
+
   {
     title: "User First",
     desc: "Performance and accessibility aren't afterthoughts — they're built in from day one.",
-    icon: "👤",
+    icon: User,
   },
   {
     title: "Never Stop Learning",
     desc: "Frontend moves fast. I stay curious, experiment constantly, and embrace new tools.",
-    icon: "🌱",
+    icon: Sprout,
   },
   {
     title: "Ship It",
     desc: "Done is better than perfect. I balance quality with velocity to deliver real impact.",
-    icon: "📦",
+    icon: Package,
   },
 ];
 
@@ -121,7 +128,7 @@ onMounted(() => {
           <p
             class="text-muted text-xl md:text-2xl max-w-3xl leading-relaxed font-medium"
           >
-            I'm <strong class="text-white">Rohan Jadav</strong>, a Frontend
+            I'm <strong class="text-accent">Rohan Jadav</strong>, a Frontend
             Developer obsessed with building web experiences that are fast,
             beautiful, and intuitive. I believe great UI is invisible — users
             don't think about it, they just enjoy it.
@@ -156,14 +163,18 @@ onMounted(() => {
             >
               <!-- Content -->
               <div
-                class="glass-card p-8 transition-all duration-500 hover:border-white/20"
+                class="glass-card p-8 transition-all duration-500 hover:border-red-500/20"
                 :class="i % 2 === 0 ? 'md:order-1' : 'md:order-2'"
               >
                 <div
                   class="flex items-center gap-3 mb-4"
                   :class="i % 2 === 0 ? 'md:flex-row-reverse' : ''"
                 >
-                  <span class="text-3xl">{{ item.icon }}</span>
+                  <component
+                    :is="item.icon"
+                    class="w-6 h-6"
+                    :style="{ color: item.color }"
+                  />
                   <span
                     class="text-xs font-black uppercase tracking-widest"
                     :style="{ color: item.color }"
@@ -210,11 +221,10 @@ onMounted(() => {
             :key="value.title"
             class="glass-card p-10 group cursor-none hover:border-white/20 transition-all duration-500"
           >
-            <div
-              class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-500 inline-block"
-            >
-              {{ value.icon }}
-            </div>
+            <component
+              :is="value.icon"
+              class="w-10 h-10 mb-6 group-hover:scale-110 transition-transform duration-500 inline-block text-accent"
+            />
             <h3 class="text-2xl font-black mb-3">{{ value.title }}</h3>
             <p class="text-muted leading-relaxed">{{ value.desc }}</p>
           </div>

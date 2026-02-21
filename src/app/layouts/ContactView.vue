@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import {
+  Mail,
+  Briefcase,
+  Github,
+  MapPin,
+  PartyPopper,
+} from "lucide-vue-next";
 
 const form = reactive({ name: "", email: "", subject: "", message: "" });
 const errors = reactive({ name: "", email: "", subject: "", message: "" });
@@ -63,22 +70,22 @@ const contactInfo = [
   {
     label: "Email",
     value: "rohanjadav51@gmail.com",
-    icon: "✉️",
+    icon: Mail,
     link: "mailto:rohanjadav51@gmail.com",
   },
   {
     label: "LinkedIn",
     value: "linkedin.com/in/rohan-jadav-3648a4381",
-    icon: "💼",
+    icon: Briefcase,
     link: "https://www.linkedin.com/in/rohan-jadav-3648a4381",
   },
   {
     label: "GitHub",
     value: "github.com/jadavrohan-370",
-    icon: "🐙",
+    icon: Github,
     link: "https://github.com/jadavrohan-370",
   },
-  { label: "Location", value: "Gujarat, India 🇮🇳", icon: "📍", link: "#" },
+  { label: "Location", value: "Gujarat, India", icon: MapPin, link: "#" },
 ];
 </script>
 
@@ -119,11 +126,10 @@ const contactInfo = [
               target="_blank"
               class="flex items-center gap-5"
             >
-              <div
-                class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shrink-0"
-              >
-                {{ info.icon }}
-              </div>
+              <component
+                :is="info.icon"
+                class="w-6 h-6 group-hover:scale-110 transition-transform duration-300 shrink-0"
+              />
               <div>
                 <p
                   class="text-xs font-bold uppercase tracking-widest text-muted mb-1"
@@ -160,7 +166,7 @@ const contactInfo = [
         <div class="lg:col-span-3">
           <!-- Success State -->
           <div v-if="isSuccess" class="glass-card p-12 text-center">
-            <div class="text-6xl mb-6">🎉</div>
+            <PartyPopper class="w-16 h-16 mx-auto mb-6 text-accent" />
             <h3 class="text-3xl font-black mb-4">Message Sent!</h3>
             <p class="text-muted leading-relaxed mb-8">
               Thanks for reaching out! I'll get back to you within 24 hours.
@@ -191,8 +197,8 @@ const contactInfo = [
                 <input
                   v-model="form.name"
                   type="text"
-                  placeholder="John Doe"
-                  class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-accent transition-all duration-300 text-sm font-medium"
+                  placeholder="your Name"
+                  class="w-full bg-slate-100 border border-slate-300 rounded-xl px-5 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent transition-all duration-300 text-sm font-medium"
                   :class="errors.name ? 'border-red-500/60' : ''"
                 />
                 <p
@@ -210,8 +216,8 @@ const contactInfo = [
                 <input
                   v-model="form.email"
                   type="email"
-                  placeholder="john@example.com"
-                  class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-accent transition-all duration-300 text-sm font-medium"
+                  placeholder="yourname@example.com"
+                  class="w-full bg-slate-100 border border-slate-300 rounded-xl px-5 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent transition-all duration-300 text-sm font-medium"
                   :class="errors.email ? 'border-red-500/60' : ''"
                 />
                 <p
@@ -233,7 +239,7 @@ const contactInfo = [
                 v-model="form.subject"
                 type="text"
                 placeholder="Project Collaboration / Job Opportunity / Just Saying Hi"
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-accent transition-all duration-300 text-sm font-medium"
+                class="w-full bg-slate-100 border border-slate-300 rounded-xl px-5 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent transition-all duration-300 text-sm font-medium"
                 :class="errors.subject ? 'border-red-500/60' : ''"
               />
               <p
@@ -254,7 +260,7 @@ const contactInfo = [
                 v-model="form.message"
                 rows="6"
                 placeholder="Tell me about your project, or just say hello!"
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-accent transition-all duration-300 resize-none text-sm font-medium"
+                class="w-full bg-slate-100 border border-slate-300 rounded-xl px-5 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent transition-all duration-300 resize-none text-sm font-medium"
                 :class="errors.message ? 'border-red-500/60' : ''"
               ></textarea>
               <div class="flex justify-between items-center mt-1">
