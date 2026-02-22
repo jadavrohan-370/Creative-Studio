@@ -46,7 +46,7 @@ const techs = [
     name: "Git & GitHub",
     category: "Workflow",
     icon: GitBranch,
-    color: "#ffffff",
+    color: "#F05032",
     desc: "Version control, branching, and collaborative coding.",
   },
   {
@@ -152,7 +152,7 @@ onMounted(() => {
 
           <!-- Description -->
           <p
-            class="text-muted text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-2 group-hover:translate-y-0"
+            class="text-gray-600  text-sm leading-relaxed opacity-80 group-hover:opacity-100 hover:text-2xl transition-all duration-500 -translate-y-2 group-hover:translate-y-0"
           >
             {{ tech.desc }}
           </p>

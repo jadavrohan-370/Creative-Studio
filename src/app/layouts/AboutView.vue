@@ -65,7 +65,6 @@ const journey = [
 ];
 
 const values = [
-
   {
     title: "User First",
     desc: "Performance and accessibility aren't afterthoughts — they're built in from day one.",

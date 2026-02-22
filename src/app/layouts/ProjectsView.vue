@@ -7,70 +7,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    title: "ShopSwift",
+    title: "RJClothStore",
     category: "E-commerce App",
-    stack: ["React.js", "Tailwind CSS", "Context API"],
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200",
+    stack: ["HTML", "Tailwind CSS", "JavaScript "],
+    image: "./public/RJ.png",
     color: "#61DAFB",
-    desc: "A full-featured e-commerce storefront with cart management, product filtering, and a slick checkout UX. Built with React and Context API for state management.",
-    live: "#",
-    github: "#",
+    desc: "My First Project with the HTML5, Tailwind css and JavaScript. A fully responsive e-commerce website with product category pages.",
+    live: "https://clothe-store-delta.vercel.app/",
+    github: "https://github.com/jadavrohan-370/Clothe_Store",
   },
   {
-    title: "TaskFlow",
-    category: "Productivity App",
-    stack: ["React.js", "Tailwind CSS", "LocalStorage"],
-    image:
-      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&q=80&w=1200",
+    title: "Food Information Website",
+    category: " Informative Website about the Products",
+    stack: ["React.js", "Tailwind CSS"],
+    image: "./public/Foorwebsite.png",
     color: "#7F5AF0",
-    desc: "A Kanban-inspired task management app with drag-and-drop support, priority labels, and deadline tracking. Clean design, zero dependencies.",
-    live: "#",
-    github: "#",
+    desc: "A food website built with React.js and Tailwind CSS. It features a clean, modern design with sections for menu, about, and contact information.",
+    live: "https://bhartifood.vercel.app/",
+    github: "https://github.com/jadavrohan-370/WEBSITEDEMO",
   },
   {
-    title: "WeatherNow",
-    category: "API Integration",
-    stack: ["JavaScript ES6+", "HTML5", "OpenWeather API"],
-    image:
-      "https://images.unsplash.com/photo-1504608524841-42584120d094?auto=format&fit=crop&q=80&w=1200",
+    title: "Portfolio Website",
+    category: "Full Portfolio Showcase",
+    stack: ["React.js", "Tailwind CSS", "Routing"],
+    image: "./public/Portfoliopic.png",
     color: "#00F5D4",
-    desc: "A location-aware weather dashboard that pulls real-time data from the OpenWeather API. Animated weather icons and 7-day forecast.",
-    live: "#",
-    github: "#",
-  },
-  {
-    title: "DevBlog",
-    category: "Blog Platform",
-    stack: ["React.js", "Tailwind CSS", "Markdown"],
-    image:
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=1200",
-    color: "#2CB67D",
-    desc: "A minimal, fast developer blog with markdown support, dark mode, and syntax-highlighted code blocks. Focuses on readability.",
-    live: "#",
-    github: "#",
-  },
-  {
-    title: "CryptoTrack",
-    category: "Dashboard / Data Viz",
-    stack: ["React.js", "Chart.js", "CoinGecko API"],
-    image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1200",
-    color: "#F7DF1E",
-    desc: "A real-time cryptocurrency price tracker with live charts, portfolio watchlist, and percentage change animations.",
-    live: "#",
-    github: "#",
-  },
-  {
-    title: "QuizMaster",
-    category: "Interactive UI",
-    stack: ["JavaScript ES6+", "HTML5", "CSS3"],
-    image:
-      "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80&w=1200",
-    color: "#E34F26",
-    desc: "A multi-category quiz game with timer, score tracking, and animated results — pure vanilla JS, no frameworks.",
-    live: "#",
-    github: "#",
+    desc: "A personal portfolio website built with React.js and Tailwind CSS. It includes sections for projects, skills, and contact information, showcasing my work and experience.",
+    live: "https://rohan-portfolio-website.vercel.app/",
+    github: "https://github.com/jadavrohan-370/Frontendportfolio",
   },
 ];
 
@@ -138,7 +102,7 @@ onMounted(() => {
                 <span
                   v-for="tech in project.stack"
                   :key="tech"
-                  class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-black/50 backdrop-blur-md border border-white/10"
+                  class="px-3 py-1 rounded-full text-[10px] font-white uppercase tracking-wider bg-zinc-900/20 backdrop-blur-md border border-white/10 text-white/80 group-hover:text-white transition-colors duration-500"
                   >{{ tech }}</span
                 >
               </div>
@@ -166,7 +130,7 @@ onMounted(() => {
               <div class="flex items-center gap-6">
                 <a
                   :href="project.live"
-                  class="group/btn flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider border border-white/10 hover:bg-white hover:text-black transition-all duration-300"
+                  class="group/btn flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider border border-amber-400/50 hover:bg-accent-red hover:text-accent-gold transition-all duration-300"
                 >
                   Live Demo
                   <span
@@ -176,7 +140,7 @@ onMounted(() => {
                 </a>
                 <a
                   :href="project.github"
-                  class="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-muted hover:text-white transition-colors duration-300"
+                  class="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:bg-red-600 p-4 rounded-full text-blue-600 hover:text-white transition-colors duration-300 hover:shadow-[0_0_20px_rgba(240,80,50,0.5)]"
                 >
                   GitHub
                   <span>→</span>

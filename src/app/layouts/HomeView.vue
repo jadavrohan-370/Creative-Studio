@@ -7,30 +7,39 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Featured projects (3 highlights only — full list on /projects)
+// Featured projects
 const featured = [
   {
-    title: "ShopSwift",
-    category: "E-commerce / React.js",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200",
+    title: "RJClothStore",
+    category: "E-commerce App",
+    stack: ["HTML", "Tailwind CSS", "JavaScript"],
+    image: "./public/RJ.png",
     color: "#61DAFB",
+    desc: "My First Project with the HTML5, Tailwind css and JavaScript. A fully responsive e-commerce website with product category pages.",
+    live: "https://clothe-store-delta.vercel.app/",
+    github: "https://github.com/jadavrohan-370/Clothe_Store",
     href: "/projects",
   },
   {
-    title: "TaskFlow",
-    category: "Productivity App / React.js",
-    image:
-      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&q=80&w=1200",
+    title: "Food Information Website",
+    category: "Informative Website about the Products",
+    stack: ["React.js", "Tailwind CSS"],
+    image: "./public/Foorwebsite.png",
     color: "#7F5AF0",
+    desc: "A food website built with React.js and Tailwind CSS. It features a clean, modern design with sections for menu, about, and contact information.",
+    live: "https://bhartifood.vercel.app/",
+    github: "https://github.com/jadavrohan-370/WEBSITEDEMO",
     href: "/projects",
   },
   {
-    title: "WeatherNow",
-    category: "API Integration / JS ES6+",
-    image:
-      "https://images.unsplash.com/photo-1504608524841-42584120d094?auto=format&fit=crop&q=80&w=1200",
+    title: "Portfolio Website",
+    category: "Full Portfolio Showcase",
+    stack: ["React.js", "Tailwind CSS", "Routing"],
+    image: "./public/Portfoliopic.png",
     color: "#00F5D4",
+    desc: "A personal portfolio website built with React.js and Tailwind CSS. It includes sections for projects, skills, and contact information, showcasing my work and experience.",
+    live: "https://rohan-portfolio-website.vercel.app/",
+    github: "https://github.com/jadavrohan-370/Frontendportfolio",
     href: "/projects",
   },
 ];
@@ -71,7 +80,7 @@ onMounted(() => {
           </div>
           <router-link
             to="/projects"
-            class="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted hover:text-white transition-colors duration-300"
+            class="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted hover:text-[#0300F5D4] transition-colors duration-300"
           >
             View All Work
             <span
@@ -81,7 +90,7 @@ onMounted(() => {
           </router-link>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
             v-for="(project, i) in featured"
             :key="project.title"
@@ -90,17 +99,29 @@ onMounted(() => {
                 if (el) cardRefs[i] = el as HTMLElement;
               }
             "
-            class="group glass-card overflow-hidden cursor-none"
+            class="group glass-card overflow-hidden cursor-none flex flex-col"
           >
-            <div class="relative aspect-4/3 overflow-hidden">
+            <!-- Image -->
+            <div class="relative aspect-video overflow-hidden">
               <img
                 :src="project.image"
                 :alt="project.title"
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-1000"
               />
               <div
-                class="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-60"
+                class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"
               ></div>
+
+              <!-- Stack badges -->
+              <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                <span
+                  v-for="tech in project.stack"
+                  :key="tech"
+                  class="px-2 py-1 rounded-full text-[10px] font-white uppercase tracking-wider bg-zinc-900/30 backdrop-blur-md border border-white/10 text-white/70"
+                  >{{ tech }}</span
+                >
+              </div>
+
               <div class="absolute bottom-0 inset-x-0 p-6">
                 <p
                   class="text-xs uppercase tracking-widest font-bold mb-1"
@@ -111,19 +132,36 @@ onMounted(() => {
                 <h3 class="text-2xl font-black">{{ project.title }}</h3>
               </div>
             </div>
-            <div class="p-6">
-              <router-link
-                :to="project.href"
-                class="group/link flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted hover:text-white transition-colors duration-300"
-              >
-                View Project
-                <span
-                  class="group-hover/link:translate-x-1 transition-transform duration-300"
-                  >↗</span
+
+            <!-- Content -->
+            <div class="p-6 flex flex-col flex-1">
+              <p class="text-sm text-muted leading-relaxed mb-6 flex-1">
+                {{ project.desc }}
+              </p>
+
+              <!-- Links -->
+              <div class="flex items-center gap-4 flex-wrap mb-6">
+                <a
+                  :href="project.live"
+                  target="_blank"
+                  class="group/btn flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300"
                 >
-              </router-link>
+                  Live Demo
+                  <span class="group-hover/btn:translate-x-0.5 transition-transform">↗</span>
+                </a>
+                <a
+                  :href="project.github"
+                  target="_blank"
+                  class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                >
+                  GitHub
+                  <span>→</span>
+                </a>
+              </div>
+
+              <!-- Accent bar -->
               <div
-                class="h-0.5 w-0 group-hover:w-full transition-all duration-700 mt-4"
+                class="h-0.5 w-0 group-hover:w-full transition-all duration-700"
                 :style="{ backgroundColor: project.color }"
               ></div>
             </div>
@@ -148,14 +186,14 @@ onMounted(() => {
               Code.<br />Create.<br /><span class="text-gradient">Ship.</span>
             </h2>
             <p class="text-muted text-lg leading-relaxed mb-10">
-              I'm <strong class="text-white">Rohan Jadav</strong>, a passionate
+              I'm <strong class="text-text">Rohan Jadav</strong>, a passionate
               Frontend Developer who transforms ideas into responsive,
               high-performance web applications. I love the intersection of
               clean code and beautiful design.
             </p>
             <router-link
               to="/about"
-              class="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/15 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500"
+              class="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/15 text-sm font-bold uppercase tracking-widest hover:bg-[#001ddd] hover:text-white hover:scale-3d transition-all duration-500"
             >
               My Story
               <span
